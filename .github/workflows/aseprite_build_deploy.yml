@@ -63,7 +63,7 @@ jobs:
     strategy:
        matrix:
        # os: [windows-latest, ubuntu-latest, macOS-latest]
-         os: [windows-latest]
+         os: [windows-2019]
        fail-fast: false    
     steps:
       - name: (Windows) Install dependencies
