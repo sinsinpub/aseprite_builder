@@ -67,7 +67,7 @@ jobs:
        fail-fast: false    
     steps:
       - name: (Windows) Install dependencies
-        if: matrix.os == 'windows-latest'
+        if: matrix.os == 'windows-2019'
         uses: seanmiddleditch/gha-setup-ninja@master
       - name: (Ubuntu) Install dependencies
         if: matrix.os == 'ubuntu-latest'
@@ -92,14 +92,14 @@ jobs:
           unzip Aseprite-source.zip -d aseprite
           mkdir -p aseprite/build
       - name: (Windows) Set architecture for the produced binary
-        if: matrix.os == 'windows-latest'
+        if: matrix.os == 'windows-2019'
         shell: cmd
         run: call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -arch=x64
       - name: (Windows) Setting Visual Studio build environment variables and paths
-        if: matrix.os == 'windows-latest'
+        if: matrix.os == 'windows-2019'
         uses: ilammy/msvc-dev-cmd@master
       - name: (Windows) Run CMake
-        if: matrix.os == 'windows-latest'
+        if: matrix.os == 'windows-2019'
         working-directory: aseprite/build
         shell: cmd
         run: cmake -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DCMAKE_IGNORE_PATH='C:/ProgramData/chocolatey/bin/;C:/Strawberry/c/bin/' -DLAF_BACKEND=skia -DSKIA_DIR=../../skia -DSKIA_LIBRARY_DIR=../../skia/out/Release-x64 -G Ninja ..
